@@ -4,7 +4,7 @@ import * as getById from "./GetById.js";
 import * as updateById from "./UpdateById.js";
 import * as deleteById from "./DeleteById.js";
 
-export const TvShowController = {
+export const CategoryController = {
   ...create,
   ...getAll,
   ...getById,

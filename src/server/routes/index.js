@@ -1,5 +1,7 @@
 import { Router } from "express";
-import { TvShowController } from "../controllers/index.js";
+import { CategoryController } from "../controllers/category/index.js";
+import { UserController } from "../controllers/user/index.js";
+import { ProgramController } from "../controllers/program/index.js";
 
 const router = Router();
 
@@ -7,14 +9,40 @@ router.get("/", (_, res) => {
   res.send("Página inicial");
 });
 
-router.get("/tvshows", TvShowController.getAll);
+// Programs
 
-router.get("/tvshows/:id", TvShowController.getById);
+router.get("/programs", ProgramController.getAll);
 
-router.post("/tvshows", TvShowController.create);
+router.get("/programs/:id", ProgramController.getById);
 
-router.put("/tvshows/:id", TvShowController.updateById);
+router.post("/programs", ProgramController.create);
 
-router.delete("/tvshows/:id", TvShowController.deleteById);
+router.put("/programs/:id", ProgramController.updateById);
+
+router.delete("/programs/:id", ProgramController.deleteById);
+
+// Categories
+
+router.get("/categories", CategoryController.getAll);
+
+router.get("/categories/:id", CategoryController.getById);
+
+router.post("/categories", CategoryController.create);
+
+router.put("/categories/:id", CategoryController.updateById);
+
+router.delete("/categories/:id", CategoryController.deleteById);
+
+// Users
+
+router.get("/users", UserController.getAll);
+
+router.get("/users/:id", UserController.getById);
+
+router.post("/users", UserController.create);
+
+router.put("/users/:id", UserController.updateById);
+
+router.delete("/users/:id", UserController.deleteById);
 
 export { router };
