@@ -1,9 +1,7 @@
 import Sequelize from "sequelize";
 import { connection } from "../database.js";
-// import { Program } from "./Program.js";
-// import { Category } from "./Category.js";
 
-const User = connection.define("user", {
+const User = connection.define("users", {
   login: {
     type: Sequelize.STRING,
     allowNull: false,
@@ -18,13 +16,7 @@ const User = connection.define("user", {
   },
 });
 
-/* User.hasMany(Program);
-Program.belongsTo(User); */
-
-/* User.hasMany(Category);
-Category.belongsTo(User); */
-
-//User.sync({ force: false });
-User.sync({ force: true });
+User.sync({ force: false });
+//User.sync({ force: true });
 
 export { User };

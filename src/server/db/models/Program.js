@@ -3,7 +3,7 @@ import { User } from "./User.js";
 import { Category } from "./Category.js";
 import { connection } from "../database.js";
 
-const Program = connection.define("program", {
+const Program = connection.define("programs", {
   name: {
     type: Sequelize.STRING,
     allowNull: false,
@@ -18,13 +18,39 @@ const Program = connection.define("program", {
   },
 });
 
-Category.hasMany(Program);
-Program.belongsTo(Category);
+Category.hasMany(Program, {
+  foreignKey: {
+    allowNull: false,
+  },
+  onUpdate: "CASCADE",
+  onDelete: "NO ACTION",
+});
+Program.belongsTo(Category, {
+  foreignKey: {
+    name: "categoryId",
+    allowNull: false,
+  },
+  onUpdate: "CASCADE",
+  onDelete: "NO ACTION",
+});
 
-User.hasMany(Program);
-Program.belongsTo(User);
+User.hasMany(Program, {
+  foreignKey: {
+    allowNull: false,
+  },
+  onUpdate: "CASCADE",
+  onDelete: "NO ACTION",
+});
+Program.belongsTo(User, {
+  foreignKey: {
+    name: "userId",
+    allowNull: false,
+  },
+  onUpdate: "CASCADE",
+  onDelete: "NO ACTION",
+});
 
-//Program.sync({ force: false });
-Program.sync({ force: true });
+Program.sync({ force: false });
+//Program.sync({ force: true });
 
 export { Program };

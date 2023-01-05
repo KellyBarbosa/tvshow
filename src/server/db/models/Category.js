@@ -1,21 +1,31 @@
 import Sequelize from "sequelize";
 import { connection } from "../database.js";
-// import { Program } from "./Program.js";
 import { User } from "./User.js";
 
-const Category = connection.define("category", {
+const Category = connection.define("categories", {
   name: {
     type: Sequelize.STRING,
     allowNull: false,
   },
 });
 
-/* Category.hasMany(Program);
-Program.belongsTo(Category); */
+User.hasMany(Category, {
+  foreignKey: {
+    allowNull: false,
+  },
+  onUpdate: "CASCADE",
+  onDelete: "NO ACTION",
+});
+Category.belongsTo(User, {
+  foreignKey: {
+    name: "userId",
+    allowNull: false,
+  },
+  onUpdate: "CASCADE",
+  onDelete: "NO ACTION",
+});
 
-User.hasMany(Category);
-Category.belongsTo(User);
-
-Category.sync({ force: true });
+Category.sync({ force: false });
+//Category.sync({ force: true });
 
 export { Category };
