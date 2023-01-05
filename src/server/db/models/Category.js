@@ -13,19 +13,7 @@ User.hasMany(Category, {
   foreignKey: {
     allowNull: false,
   },
-  onUpdate: "CASCADE",
-  onDelete: "NO ACTION",
 });
-Category.belongsTo(User, {
-  foreignKey: {
-    name: "userId",
-    allowNull: false,
-  },
-  onUpdate: "CASCADE",
-  onDelete: "NO ACTION",
-});
-
-Category.sync({ force: false });
-//Category.sync({ force: true });
+Category.belongsTo(User);
 
 export { Category };

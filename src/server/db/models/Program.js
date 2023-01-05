@@ -22,35 +22,14 @@ Category.hasMany(Program, {
   foreignKey: {
     allowNull: false,
   },
-  onUpdate: "CASCADE",
-  onDelete: "NO ACTION",
 });
-Program.belongsTo(Category, {
-  foreignKey: {
-    name: "categoryId",
-    allowNull: false,
-  },
-  onUpdate: "CASCADE",
-  onDelete: "NO ACTION",
-});
+Program.belongsTo(Category);
 
 User.hasMany(Program, {
   foreignKey: {
     allowNull: false,
   },
-  onUpdate: "CASCADE",
-  onDelete: "NO ACTION",
 });
-Program.belongsTo(User, {
-  foreignKey: {
-    name: "userId",
-    allowNull: false,
-  },
-  onUpdate: "CASCADE",
-  onDelete: "NO ACTION",
-});
-
-Program.sync({ force: false });
-//Program.sync({ force: true });
+Program.belongsTo(User);
 
 export { Program };

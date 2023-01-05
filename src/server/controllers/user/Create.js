@@ -1,4 +1,4 @@
-import { UserProvider } from "../../db/providers/user/Create.js";
+import { UserProvider } from "../../db/providers/user/index.js";
 
 export const create = async (req, res) => {
   const login = req.body.login;

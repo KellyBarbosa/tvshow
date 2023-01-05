@@ -20,6 +20,7 @@ server.use(ProgramRoutes);
 connection
   .authenticate()
   .then(() => {
+    connection.sync();
     console.log("Database connection made successfully!");
   })
   .catch((err) => {
