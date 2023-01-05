@@ -1,4 +1,3 @@
-import { Program } from "../../db/models/Program.js";
 import { ProgramProvider } from "../../db/providers/program/index.js";
 
 export const create = async (req, res) => {

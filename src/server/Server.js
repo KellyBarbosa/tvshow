@@ -1,13 +1,21 @@
 import express from "express";
 
-import { router } from "./routes/index.js";
-
 import { connection } from "./db/database.js";
+
+import {
+  router,
+  UserRoutes,
+  CategoryRoutes,
+  ProgramRoutes,
+} from "./routes/index.js";
 
 const server = express();
 
 server.use(express.json());
 server.use(router);
+server.use(UserRoutes);
+server.use(CategoryRoutes);
+server.use(ProgramRoutes);
 
 connection
   .authenticate()

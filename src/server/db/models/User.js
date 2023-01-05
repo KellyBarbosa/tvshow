@@ -1,7 +1,7 @@
 import Sequelize from "sequelize";
 import { connection } from "../database.js";
-import { Program } from "./Program.js";
-import { Category } from "./Category.js";
+// import { Program } from "./Program.js";
+// import { Category } from "./Category.js";
 
 const User = connection.define("user", {
   login: {
@@ -18,12 +18,13 @@ const User = connection.define("user", {
   },
 });
 
-User.hasMany(Program);
-Program.belongsTo(User);
+/* User.hasMany(Program);
+Program.belongsTo(User); */
 
-User.hasMany(Category);
-Category.belongsTo(User);
+/* User.hasMany(Category);
+Category.belongsTo(User); */
 
-User.sync({ force: false });
+//User.sync({ force: false });
+User.sync({ force: true });
 
 export { User };
