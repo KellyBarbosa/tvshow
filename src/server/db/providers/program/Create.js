@@ -1,7 +1,6 @@
 import { Program } from "../../models/Program.js";
 
 export const create = async (title, description) => {
-  console.log("AD");
   const [program, created] = await Program.findOrCreate({
     where: {
       title,
@@ -12,7 +11,5 @@ export const create = async (title, description) => {
       categoryId: 1,
     },
   });
-  console.log("Program: ", program);
-  console.log("Created: ", created);
   return created;
 };
