@@ -1,5 +1,8 @@
 import { User } from "../../models/User.js";
 
-export const getAll = async (req, res) => {
-  return res.send("Listagem de todos os usuários");
+export const getAll = async () => {
+  const users = await User.findAll({
+    attributes: ["login", "isAdmin"],
+  });
+  return users;
 };
