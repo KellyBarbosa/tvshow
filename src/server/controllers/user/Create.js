@@ -9,11 +9,11 @@ export const create = async (req, res) => {
 
   if (result) {
     return res.status(201).json({
-      message: "Usuário cadastrado com sucesso.",
+      message: "Cadastro realizado com sucesso.",
     });
   } else {
     return res.status(500).json({
-      message: "Erro ao cadastrar usuário.",
+      message: "Erro ao cadastrar registro.",
     });
   }
 };
