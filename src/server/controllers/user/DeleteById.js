@@ -2,7 +2,14 @@ import { UserProvider } from "../../db/providers/user/index.js";
 
 export const deleteById = async (req, res) => {
   const id = req.body.login;
-  const result = UserProvider.deleteById(id);
+  const result = await UserProvider.deleteById(id).catch((e) => {
+    return res.status(500).json({   
+      errors: {
+        default: e.message
+      }
+    });
+  });
+  
   if (result) {
     return res.status(200).json({
       message: "Registro removido com sucesso.",

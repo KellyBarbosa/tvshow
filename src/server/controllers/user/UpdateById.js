@@ -6,7 +6,13 @@ export const updateById = async (req, res) => {
   const password = req.body.password;
   const isAdmin = req.body.isAdmin;
 
-  const result = await UserProvider.updateById(login, password, isAdmin, id);
+  const result = await UserProvider.updateById(login, password, isAdmin, id).catch((e) => {
+    return res.status(500).json({
+      errors:{
+        default: e.message
+      }
+    })
+  });;
   if (result) {
     return res.status(200).json({
       message: "Registro atualizado com sucesso.",

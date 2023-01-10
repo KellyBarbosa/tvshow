@@ -1,19 +1,23 @@
 import { User } from "../../models/User.js";
 
 export const updateById = async (login, password, isAdmin, id) => {
-  const updated = await User.update(
-    {
-      login,
-      password,
-      isAdmin,
-    },
-    {
-      where: {
-        id,
+  try {
+    const updated = await User.update(
+      {
+        login,
+        password,
+        isAdmin,
       },
-    }
-  )
-    .then(() => true)
-    .catch(() => false);
-  return updated;
+      {
+        where: {
+          id,
+        },
+      }
+    )
+      .then((result) => result)
+    return updated;
+  } catch (error) {
+    return new Error("Erro ao atualizar registro.")
+  }
+  
 };

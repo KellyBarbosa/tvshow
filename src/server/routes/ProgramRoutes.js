@@ -1,16 +1,16 @@
 import { Router } from "express";
 import { ProgramController } from "../controllers/program/index.js";
 
-const ProgramRoutes = Router();
+const router = Router();
 
-ProgramRoutes.get("/programs", ProgramController.getAll);
+router.get("/programs", ProgramController.getAll);
 
-ProgramRoutes.get("/programs/:id", ProgramController.getById);
+router.get("/programs/:id", ProgramController.getById);
 
-ProgramRoutes.post("/programs", ProgramController.create);
+router.post("/programs", ProgramController.create);
 
-ProgramRoutes.put("/programs/:id", ProgramController.updateById);
+router.put("/programs/:id", ProgramController.updateById);
 
-ProgramRoutes.delete("/programs/:id", ProgramController.deleteById);
+router.delete("/programs/:id", ProgramController.deleteById);
 
-export { ProgramRoutes };
+export { router };
