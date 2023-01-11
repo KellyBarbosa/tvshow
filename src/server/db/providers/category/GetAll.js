@@ -1,5 +1,13 @@
 import { Category } from "../../db/models/Category.js";
 
-export const getAll = async (req, res) => {
-  return res.send("Listagem de todos os programas");
+export const getAll = async () => {
+  try {
+    const categories = await Category.findAll({
+      attributes: ["name"]
+    })
+    return categories
+  } catch (error) {
+    return new Error("Erro ao consultar registros.")
+  }
+
 };

@@ -1,8 +1,9 @@
 import { Category } from "../../models/Category.js";
 import { UserProvider } from "../user/index.js";
+
 export const create = async (name, userId) => {
   try {    
-    const user = await UserProvider.getById(userId).then(async (result)=> {
+    await UserProvider.getById(userId).then(async (result)=> {
       if (result === null || result instanceof Error) {
         return new Error("Erro ao cadastrar registro.")
       } else {
@@ -16,7 +17,7 @@ export const create = async (name, userId) => {
         })
         return created
       }
-    })
+    }).catch(() => new Error("Erro ao cadastrar registro."))
   } catch (error) {
     return new Error("Erro ao cadastrar registro.")
   }

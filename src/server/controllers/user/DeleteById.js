@@ -1,7 +1,7 @@
 import { UserProvider } from "../../db/providers/user/index.js";
 
 export const deleteById = async (req, res) => {
-  const id = req.body.login;
+  const id = req.body.id;
   const result = await UserProvider.deleteById(id).catch((e) => {
     return res.status(500).json({   
       errors: {
