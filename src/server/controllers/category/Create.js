@@ -7,18 +7,18 @@ export const create = async (req, res) => {
   const result = await CategoryProvider.create(name, userId).catch((e) => {
     return res.status(500).json({
       errors: {
-        default: e.message
-      }
-    })
-  })
+        message: e.message,
+      },
+    });
+  });
 
-  if(!result){
+  if (!result) {
     return res.status(400).json({
       errors: {
-        default: "Erro ao cadastrar registro."
-      }
-    })
-  }else {
+        message: "Erro ao cadastrar registro.",
+      },
+    });
+  } else {
     return res.status(201).json({
       message: "Cadastro realizado com sucesso.",
     });

@@ -8,7 +8,7 @@ export const create = async (title, description, categoryId) => {
     defaults: {
       description,
       score: 0,
-      categoryId: 
+      categoryId: 1,
     },
   });
   return created;

@@ -13,11 +13,9 @@ export const updateById = async (login, password, isAdmin, id) => {
           id,
         },
       }
-    )
-      .then((result) => result)
+    ).then((result) => result[0]);
     return updated;
   } catch (error) {
-    return new Error("Erro ao atualizar registro.")
+    return new Error("Erro ao atualizar registro.");
   }
-  
 };

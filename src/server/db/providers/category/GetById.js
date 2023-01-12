@@ -1,10 +1,10 @@
-import { Category } from "../../db/models/Category.js";
+import { Category } from "../../models/Category.js";
 
 export const getById = async (id) => {
   try {
-    const category = await Category.findByPk(id)
-    return category
+    const category = await Category.findByPk(id);
+    return category;
   } catch (error) {
-    return new Error("Erro ao consultar registro.")
+    return new Error("Erro ao consultar registro.");
   }
 };

@@ -5,23 +5,41 @@ export const create = async (req, res) => {
   const password = req.body.password;
   const isAdmin = req.body.isAdmin;
 
-  const result = await UserProvider.create(login, password, isAdmin).catch((e) => {
-    return res.status(500).json({   
+  if (
+    login === undefined ||
+    login.trim().length === 0 ||
+    password === undefined ||
+    password.trim().length === 0 ||
+    isAdmin === undefined ||
+    typeof isAdmin !== "boolean"
+  ) {
+    return res.status(400).json({
       errors: {
-        default: e.message
-      }
-    });
-  });
-
-  if(!result) {
-    return res.status(400).json({   
-      errors: {
-        default: "Erro ao cadastrar registro."
-      }
+        message: "Erro ao cadastrar registro, problema nos dados enviados.",
+      },
     });
   } else {
-    return res.status(201).json({
-      message: "Cadastro realizado com sucesso.",
-    });
-  }  
+    const result = await UserProvider.create(login, password, isAdmin).catch(
+      (e) => {
+        return res.status(500).json({
+          errors: {
+            message: e.message,
+          },
+        });
+      }
+    );
+
+    if (!result) {
+      return res.status(400).json({
+        errors: {
+          message:
+            "Erro ao cadastrar registro, pois já existe um usuário com o mesmo login.",
+        },
+      });
+    } else {
+      return res.status(201).json({
+        message: "Cadastro realizado com sucesso.",
+      });
+    }
+  }
 };
