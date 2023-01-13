@@ -8,7 +8,7 @@ export const deleteById = async (req, res) => {
         message: "Erro ao remover registro, problema no parâmetro informado.",
       },
     });
-  } else {
+  } 
     const result = await UserProvider.deleteById(id).catch((e) => {
       return res.status(500).json({
         errors: {
@@ -26,5 +26,5 @@ export const deleteById = async (req, res) => {
         message: "Erro ao remover registro, registro não localizado.",
       });
     }
-  }
+  
 };

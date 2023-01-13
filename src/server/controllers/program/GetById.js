@@ -1,5 +1,28 @@
 import { ProgramProvider } from "../../db/providers/program/index.js";
 
 export const getById = async (req, res) => {
-  return res.send("Visualizando um programa");
+  const id = req.params.id;
+
+  if(id <= 0 || !Number.isInteger(Number(id))){
+    return res.status(400).json({
+      errors: {
+        message: "Erro ao consultar registro, problema no parâmetro informado."
+      }
+    })
+  }
+
+  const result = await ProgramProvider.getById(id).catch((e) => {
+    return res.status(500).json({
+      errors: {
+        message: e.message,
+      },
+    });
+  });
+  if (result === null) {
+    return res.status(400).json({
+      message: "Registro não localizado.",
+    });
+  } else {
+    return res.status(200).json(result);
+  }
 };

@@ -9,7 +9,7 @@ export const getById = async (req, res) => {
         message: "Erro ao consultar registro, problema no parâmetro informado.",
       },
     });
-  } else {
+  } 
     const result = await UserProvider.getById(id).catch((e) => {
       return res.status(500).json({
         errors: {
@@ -24,5 +24,4 @@ export const getById = async (req, res) => {
     } else {
       return res.status(200).json(result);
     }
-  }
 };

@@ -18,7 +18,8 @@ export const create = async (req, res) => {
         message: "Erro ao cadastrar registro, problema nos dados enviados.",
       },
     });
-  } else {
+  } 
+
     const result = await UserProvider.create(login, password, isAdmin).catch(
       (e) => {
         return res.status(500).json({
@@ -41,5 +42,5 @@ export const create = async (req, res) => {
         message: "Cadastro realizado com sucesso.",
       });
     }
-  }
+  
 };

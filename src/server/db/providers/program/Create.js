@@ -1,14 +1,15 @@
 import { Program } from "../../models/Program.js";
 
-export const create = async (title, description, categoryId) => {
+export const create = async (name, description, categoryId, userId) => {
   const [program, created] = await Program.findOrCreate({
     where: {
-      title,
+      name,
     },
     defaults: {
       description,
       score: 0,
-      categoryId: 1,
+      categoryId,
+      userId
     },
   });
   return created;

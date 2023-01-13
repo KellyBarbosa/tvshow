@@ -12,7 +12,8 @@ export const updateById = async (req, res) => {
         message: "Erro ao atualizar registro, problema no parâmetro informado.",
       },
     });
-  } else if (
+  } 
+  if (
     login === undefined ||
     login.trim().length === 0 ||
     password === undefined ||
@@ -25,7 +26,8 @@ export const updateById = async (req, res) => {
         message: "Erro ao atualizar registro, problema nos dados enviados.",
       },
     });
-  } else {
+  } 
+
     const result = await UserProvider.updateById(
       login,
       password,
@@ -38,7 +40,7 @@ export const updateById = async (req, res) => {
         },
       });
     });
-    console.log("Result: ", result);
+
     if (result) {
       return res.status(200).json({
         message: "Registro atualizado com sucesso.",
@@ -48,5 +50,5 @@ export const updateById = async (req, res) => {
         message: "Erro ao atualizar registro, registro não localizado.",
       });
     }
-  }
+  
 };
