@@ -12,7 +12,7 @@ export const updateById = async (req, res) => {
         message: "Erro ao atualizar registro, problema no parâmetro informado.",
       },
     });
-  } 
+  }
   if (
     login === undefined ||
     login.trim().length === 0 ||
@@ -26,29 +26,28 @@ export const updateById = async (req, res) => {
         message: "Erro ao atualizar registro, problema nos dados enviados.",
       },
     });
-  } 
+  }
 
-    const result = await UserProvider.updateById(
-      login,
-      password,
-      isAdmin,
-      id
-    ).catch((e) => {
-      return res.status(500).json({
-        errors: {
-          message: e.message,
-        },
-      });
+  const result = await UserProvider.updateById(
+    login,
+    password,
+    isAdmin,
+    id
+  ).catch((e) => {
+    return res.status(500).json({
+      errors: {
+        message: e.message,
+      },
     });
+  });
 
-    if (result) {
-      return res.status(200).json({
-        message: "Registro atualizado com sucesso.",
-      });
-    } else {
-      return res.status(400).json({
-        message: "Erro ao atualizar registro, registro não localizado.",
-      });
-    }
-  
+  if (result) {
+    return res.status(200).json({
+      message: "Registro atualizado com sucesso.",
+    });
+  } else {
+    return res.status(400).json({
+      message: "Erro ao atualizar registro, registro não localizado.",
+    });
+  }
 };

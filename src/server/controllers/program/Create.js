@@ -34,7 +34,8 @@ export const create = async (req, res) => {
   });
   if (user === null) {
     return res.status(400).json({
-      message: "Erro ao cadastrar registro, pois o usuário a ser vinculado não foi encontrado.",
+      message:
+        "Erro ao cadastrar registro, pois o usuário a ser vinculado não foi encontrado.",
     });
   }
 
@@ -47,19 +48,25 @@ export const create = async (req, res) => {
   });
   if (category === null) {
     return res.status(400).json({
-      message: "Erro ao cadastrar registro, pois a categoria a ser vinculada não foi encontrada.",
+      message:
+        "Erro ao cadastrar registro, pois a categoria a ser vinculada não foi encontrada.",
     });
   }
 
-  const result = await ProgramProvider.create(name, description, categoryId, userId);
+  const result = await ProgramProvider.create(
+    name,
+    description,
+    categoryId,
+    userId
+  );
   if (result) {
     return res.status(201).json({
-      message: "Erro ao cadastrar registro, pois já existe um programa com o mesmo nome.",
-
+      message: "Cadastro realizado com sucesso.",
     });
   } else {
     return res.status(500).json({
-      message: "Erro ao cadastrar o programa.",
+      message:
+        "Erro ao cadastrar registro, pois já existe um programa com o mesmo nome.",
     });
   }
 };

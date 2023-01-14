@@ -10,7 +10,7 @@ const Program = connection.define("programs", {
   },
   description: {
     type: Sequelize.TEXT,
-    allowNull: true,
+    allowNull: false,
   },
   score: {
     type: Sequelize.INTEGER,

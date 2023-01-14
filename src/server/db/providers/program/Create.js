@@ -9,7 +9,7 @@ export const create = async (name, description, categoryId, userId) => {
       description,
       score: 0,
       categoryId,
-      userId
+      userId,
     },
   });
   return created;

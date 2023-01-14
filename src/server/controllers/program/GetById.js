@@ -3,12 +3,12 @@ import { ProgramProvider } from "../../db/providers/program/index.js";
 export const getById = async (req, res) => {
   const id = req.params.id;
 
-  if(id <= 0 || !Number.isInteger(Number(id))){
+  if (id <= 0 || !Number.isInteger(Number(id))) {
     return res.status(400).json({
       errors: {
-        message: "Erro ao consultar registro, problema no parâmetro informado."
-      }
-    })
+        message: "Erro ao consultar registro, problema no parâmetro informado.",
+      },
+    });
   }
 
   const result = await ProgramProvider.getById(id).catch((e) => {

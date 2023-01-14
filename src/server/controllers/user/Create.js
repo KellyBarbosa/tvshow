@@ -18,29 +18,28 @@ export const create = async (req, res) => {
         message: "Erro ao cadastrar registro, problema nos dados enviados.",
       },
     });
-  } 
+  }
 
-    const result = await UserProvider.create(login, password, isAdmin).catch(
-      (e) => {
-        return res.status(500).json({
-          errors: {
-            message: e.message,
-          },
-        });
-      }
-    );
-
-    if (!result) {
-      return res.status(400).json({
+  const result = await UserProvider.create(login, password, isAdmin).catch(
+    (e) => {
+      return res.status(500).json({
         errors: {
-          message:
-            "Erro ao cadastrar registro, pois já existe um usuário com o mesmo login.",
+          message: e.message,
         },
       });
-    } else {
-      return res.status(201).json({
-        message: "Cadastro realizado com sucesso.",
-      });
     }
-  
+  );
+
+  if (!result) {
+    return res.status(400).json({
+      errors: {
+        message:
+          "Erro ao cadastrar registro, pois já existe um usuário com o mesmo login.",
+      },
+    });
+  } else {
+    return res.status(201).json({
+      message: "Cadastro realizado com sucesso.",
+    });
+  }
 };

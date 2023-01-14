@@ -46,7 +46,8 @@ export const updateById = async (req, res) => {
   });
   if (user === null) {
     return res.status(400).json({
-      message: "Erro ao atualizar registro, pois o usuário a ser vinculado não foi encontrado.",
+      message:
+        "Erro ao atualizar registro, pois o usuário a ser vinculado não foi encontrado.",
     });
   }
 
@@ -59,19 +60,25 @@ export const updateById = async (req, res) => {
   });
   if (category === null) {
     return res.status(400).json({
-      message: "Erro ao atualizar registro, pois a categoria a ser vinculada não foi encontrada.",
+      message:
+        "Erro ao atualizar registro, pois a categoria a ser vinculada não foi encontrada.",
     });
   }
 
-  const result = await ProgramProvider.updateById(id, name, description, score, categoryId, userId).catch(
-    (e) => {
-      return res.status(500).json({
-        errors: {
-          message: e.message,
-        },
-      });
-    }
-  );
+  const result = await ProgramProvider.updateById(
+    id,
+    name,
+    description,
+    score,
+    categoryId,
+    userId
+  ).catch((e) => {
+    return res.status(500).json({
+      errors: {
+        message: e.message,
+      },
+    });
+  });
   if (result) {
     return res.status(200).json({
       message: "Registro atualizado com sucesso.",

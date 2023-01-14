@@ -6,11 +6,9 @@ export const deleteById = async (id) => {
       where: {
         id,
       },
-    })
-      .then((result) => result)
+    }).then((result) => result);
     return deleted;
   } catch (error) {
-    return new Error ("Erro ao remover registro.")
+    return new Error("Erro ao remover registro.");
   }
- 
 };

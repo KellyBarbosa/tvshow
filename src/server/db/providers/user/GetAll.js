@@ -7,7 +7,6 @@ export const getAll = async () => {
     });
     return users;
   } catch (error) {
-    return new Error ("Erro ao consultar registros.")
+    return new Error("Erro ao consultar registros.");
   }
-
 };
