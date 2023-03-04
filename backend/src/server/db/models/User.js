@@ -14,6 +14,10 @@ const User = connection.define("users", {
     type: Sequelize.BOOLEAN,
     allowNull: false,
   },
+  active: {
+    type: Sequelize.BOOLEAN,
+    allowNull: false,
+  },
 });
 
 export { User };

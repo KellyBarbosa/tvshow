@@ -2,8 +2,7 @@ import { CategoryProvider } from "../../db/providers/category/index.js";
 import { UserProvider } from "../../db/providers/user/index.js";
 
 export const create = async (req, res) => {
-  const name = req.body.name;
-  const userId = req.body.userId;
+  const { name, userId } = req.body;
 
   if (
     name === undefined ||

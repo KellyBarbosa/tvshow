@@ -16,6 +16,10 @@ const Program = connection.define("programs", {
     type: Sequelize.INTEGER,
     allowNull: false,
   },
+  active: {
+    type: Sequelize.BOOLEAN,
+    allowNull: false,
+  },
 });
 
 Category.hasMany(Program, {

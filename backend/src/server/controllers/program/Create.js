@@ -3,10 +3,7 @@ import { ProgramProvider } from "../../db/providers/program/index.js";
 import { UserProvider } from "../../db/providers/user/index.js";
 
 export const create = async (req, res) => {
-  const name = req.body.name;
-  const description = req.body.description;
-  const categoryId = req.body.categoryId;
-  const userId = req.body.userId;
+  const { name, description, categoryId, userId } = req.body;
 
   if (
     name === undefined ||

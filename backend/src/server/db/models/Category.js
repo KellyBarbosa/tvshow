@@ -7,6 +7,10 @@ const Category = connection.define("categories", {
     type: Sequelize.STRING,
     allowNull: false,
   },
+  active: {
+    type: Sequelize.BOOLEAN,
+    allowNull: false,
+  },
 });
 
 User.hasMany(Category, {

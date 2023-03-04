@@ -1,16 +1,16 @@
 import { User } from "../../models/User.js";
 
-export const updateById = async (login, password, isAdmin, id) => {
+export const updateById = async (login, isAdmin, id) => {
   try {
     const updated = await User.update(
       {
         login,
-        password,
         isAdmin,
       },
       {
         where: {
           id,
+          active: true,
         },
       }
     ).then((result) => result[0]);

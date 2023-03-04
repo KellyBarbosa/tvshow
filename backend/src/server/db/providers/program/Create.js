@@ -9,6 +9,7 @@ export const create = async (name, description, categoryId, userId) => {
       description,
       score: 0,
       categoryId,
+      active: true,
       userId,
     },
   });

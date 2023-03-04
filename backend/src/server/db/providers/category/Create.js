@@ -8,6 +8,7 @@ export const create = async (name, userId) => {
       },
       defaults: {
         userId,
+        active: true,
       },
     });
     return created;

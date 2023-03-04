@@ -1,9 +1,7 @@
 import { UserProvider } from "../../db/providers/user/index.js";
 
 export const create = async (req, res) => {
-  const login = req.body.login;
-  const password = req.body.password;
-  const isAdmin = req.body.isAdmin;
+  const { login, password, isAdmin } = req.body;
 
   if (
     login === undefined ||

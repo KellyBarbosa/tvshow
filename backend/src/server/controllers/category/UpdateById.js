@@ -3,8 +3,7 @@ import { UserProvider } from "../../db/providers/user/index.js";
 
 export const updateById = async (req, res) => {
   const id = req.params.id;
-  const name = req.body.name;
-  const userId = req.body.userId;
+  const { name, userId } = req.body;
 
   if (id <= 0 || !Number.isInteger(Number(id))) {
     return res.status(400).json({

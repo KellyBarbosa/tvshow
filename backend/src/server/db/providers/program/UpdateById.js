@@ -20,9 +20,10 @@ export const updateById = async (
       {
         where: {
           id,
+          active: true,
         },
       }
-    ).then((result) => result);
+    ).then((result) => result[0]);
     return updated;
   } catch (error) {
     return new Error("Erro ao atualizar registro.");

@@ -2,9 +2,7 @@ import { UserProvider } from "../../db/providers/user/index.js";
 
 export const updateById = async (req, res) => {
   const id = req.params.id;
-  const login = req.body.login;
-  const password = req.body.password;
-  const isAdmin = req.body.isAdmin;
+  const { login, isAdmin } = req.body;
 
   if (id <= 0 || !Number.isInteger(Number(id))) {
     return res.status(400).json({
@@ -16,8 +14,6 @@ export const updateById = async (req, res) => {
   if (
     login === undefined ||
     login.trim().length === 0 ||
-    password === undefined ||
-    password.trim().length === 0 ||
     isAdmin === undefined ||
     typeof isAdmin !== "boolean"
   ) {
@@ -28,18 +24,15 @@ export const updateById = async (req, res) => {
     });
   }
 
-  const result = await UserProvider.updateById(
-    login,
-    password,
-    isAdmin,
-    id
-  ).catch((e) => {
-    return res.status(500).json({
-      errors: {
-        message: e.message,
-      },
-    });
-  });
+  const result = await UserProvider.updateById(login, isAdmin, id).catch(
+    (e) => {
+      return res.status(500).json({
+        errors: {
+          message: e.message,
+        },
+      });
+    }
+  );
 
   if (result) {
     return res.status(200).json({

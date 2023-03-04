@@ -9,6 +9,7 @@ export const create = async (login, password, isAdmin) => {
       defaults: {
         password,
         isAdmin,
+        active: true,
       },
     });
     return created;
