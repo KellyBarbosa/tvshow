@@ -13,4 +13,6 @@ router.put("/users/:id", UserController.updateById);
 
 router.delete("/users/:id", UserController.deleteById);
 
+router.post("/users/login", UserController.login);
+
 export { router };
