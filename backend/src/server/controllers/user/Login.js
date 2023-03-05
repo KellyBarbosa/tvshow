@@ -1,4 +1,5 @@
 import { UserProvider } from "../../db/providers/user/index.js";
+import { JWTService } from "../../shared/services/JWTService.js";
 import { PasswordCrypto } from "../../shared/services/PasswordCrypto.js";
 
 export const login = async (req, res) => {
@@ -33,8 +34,17 @@ export const login = async (req, res) => {
         },
       });
     } else {
+      const accessToken = JWTService.sign({ id: result.id });
+
+      if (accessToken === "JWT_SECRET_NOT_FOUND") {
+        return res.status(500).json({
+          errors: {
+            message: "Erro ao gerar o token de acesso.",
+          },
+        });
+      }
       return res.status(200).json({
-        accessToken: "token.token.token",
+        accessToken,
       });
     }
   } else {

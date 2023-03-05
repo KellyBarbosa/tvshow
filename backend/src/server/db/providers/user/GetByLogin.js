@@ -4,7 +4,7 @@ export const getByLogin = async (login) => {
   try {
     const user = await User.findOne({
       where: { login: login, active: true },
-      attributes: ["login", "password"],
+      attributes: ["id", "login", "password"],
     });
     if (user === null) {
       return user;
